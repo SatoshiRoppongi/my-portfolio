@@ -1,7 +1,7 @@
 <template>
   <div class="p-6 space-y-12 max-w-4xl mx-auto">
     <div class="flex flex-col items-center p-6 md:grid md:grid-cols-2">
-      <NuxtImg src="image.png" alt="プロフィール画像" class="rounded-xl mb-6 md:mb-0 md:ml-0"/>
+      <NuxtImg :src="`${baseURL}/image.png`" alt="プロフィール画像" class="rounded-xl mb-6 md:mb-0 md:ml-0"/>
       <div class="text-center md:text-left">
         <div class="p-6 text-lg font-bold ">
           フリーランス システムエンジニア
@@ -34,7 +34,7 @@
           @mouseleave="hideTooltip"
         >
           <NuxtImg 
-            :src="`/skill${n}.png`" 
+            :src="`${baseURL}/skill${n}.png`" 
             alt="Skill Image" 
             class="w-full h-full object-cover cursor-pointer rounded-xl"
           />
@@ -76,6 +76,7 @@
 </template>
 
 <script setup lang="ts">
+
 const { data: experiences } = await useAsyncData('experiences', () =>
   queryCollection('content').all()
 )
@@ -83,6 +84,8 @@ const { data: experiences } = await useAsyncData('experiences', () =>
 // group: companyT
 // mystatus: solo
 const tooltipVisible = ref<number | null>(null);
+const config = useRuntimeConfig()
+const baseURL = config.app.baseURL
 
 const goodAtList = ref([
   {
