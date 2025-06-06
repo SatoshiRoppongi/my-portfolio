@@ -1,0 +1,12 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["@types/node", "@nuxt/content"],
+    "lib": ["esnext", "dom"],
+    "allowJs": true
+  }
+}
